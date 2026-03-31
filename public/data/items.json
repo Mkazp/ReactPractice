@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Беспроводные наушники ProSound X1",
+      "category": "Электроника",
+      "price": 199.99,
+      "currency": "Руб",
+      "isPremium": true,
+      "stock": 15,
+      "rating": 4.8,
+      "description": "Премиальные беспроводные наушники с активным шумоподавлением и временем работы до 30 часов.",
+      "image": "/images/products/prosound-x1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Портативная колонка SoundMini",
+      "category": "Электроника",
+      "price": 49.99,
+      "currency": "Руб",
+      "isPremium": false,
+      "stock": 42,
+      "rating": 4.3,
+      "description": "Компактная портативная колонка с качественным звуком и защитой от влаги.",
+      "image": "/images/products/soundmini.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Механическая клавиатура Titan Pro",
+      "category": "Аксессуары",
+      "price": 159.99,
+      "currency": "Руб",
+      "isPremium": true,
+      "stock": 8,
+      "rating": 4.9,
+      "description": "Премиальная механическая клавиатура с RGB подсветкой и алюминиевым корпусом.",
+      "image": "/images/products/titan-pro.jpg"
+    }
+  ]
+}
