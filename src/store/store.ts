@@ -36,6 +36,6 @@ export const useMarketItemsStore = create<MarketItemsStore>()(
     }),
     {
       name: "market-items-storage",
-    },
-  ),
+    }
+  )
 );
