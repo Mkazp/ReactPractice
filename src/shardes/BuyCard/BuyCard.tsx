@@ -8,6 +8,7 @@ interface Data {
   stock: number;
   description: string;
   onDelToCart: (id: number[]) => void;
+    volume: number;
 }
 
 export const BuyCard = ({
@@ -18,6 +19,7 @@ export const BuyCard = ({
   stock,
   description,
   onDelToCart,
+  volume,
 }: Data) => {
   return (
     <div className={`${styles.card}`}>
@@ -26,6 +28,15 @@ export const BuyCard = ({
         <p className={styles.price}>
           Цена: {price} {currency}
         </p>
+        {stock > volume ? (
+          <p className={styles.price}>
+          Количество: {volume}
+        </p>
+        ) : (
+          <p>
+            Нет в наличии
+          </p>
+        )}   
       </div>
       <p>Описание: {description}</p>
       <button onClick={() => onDelToCart([id])}>Удалить</button>

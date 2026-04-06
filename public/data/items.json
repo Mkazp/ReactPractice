@@ -10,7 +10,7 @@
       "stock": 15,
       "rating": 4.8,
       "description": "Премиальные беспроводные наушники с активным шумоподавлением и временем работы до 30 часов.",
-      "image": "/images/products/prosound-x1.jpg"
+      "image": ""
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "stock": 42,
       "rating": 4.3,
       "description": "Компактная портативная колонка с качественным звуком и защитой от влаги.",
-      "image": "/images/products/soundmini.jpg"
+      "image": ""
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "stock": 8,
       "rating": 4.9,
       "description": "Премиальная механическая клавиатура с RGB подсветкой и алюминиевым корпусом.",
-      "image": "/images/products/titan-pro.jpg"
+      "image": ""
     }
   ]
 }

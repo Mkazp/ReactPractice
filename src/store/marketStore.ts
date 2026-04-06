@@ -8,8 +8,8 @@ interface ItemsBin {
 
 interface MarketBin {
   items: ItemsBin[];
-  totalCount: number; // количество уникальных товаров
-  totalItems: number; // общее количество товаров (сумма counter)
+  totalCount: number;
+  totalItems: number;
   counterInc: (item: ItemsBin) => void;
   counterDec: (id: number[]) => void;
 }
@@ -26,7 +26,7 @@ export const useMarketBin = create<MarketBin>()(
           const existingItemIndex = state.items.findIndex(
             (existingItem) =>
               existingItem.id.length === item.id.length &&
-              existingItem.id.every((value, index) => value === item.id[index])
+              existingItem.id.every((value, index) => value === item.id[index]),
           );
 
           let updatedItems;
@@ -41,10 +41,9 @@ export const useMarketBin = create<MarketBin>()(
             updatedItems = [...state.items, { ...item, counter: 1 }];
           }
 
-          // Считаем сумму всех counter
           const totalItemsSum = updatedItems.reduce(
             (sum, item) => sum + item.counter,
-            0
+            0,
           );
 
           return {
@@ -59,7 +58,7 @@ export const useMarketBin = create<MarketBin>()(
           const existingItemIndex = state.items.findIndex(
             (existingItem) =>
               existingItem.id.length === id.length &&
-              existingItem.id.every((value, index) => value === id[index])
+              existingItem.id.every((value, index) => value === id[index]),
           );
 
           if (existingItemIndex !== -1) {
@@ -73,7 +72,7 @@ export const useMarketBin = create<MarketBin>()(
               };
               const totalItemsSum = updatedItems.reduce(
                 (sum, item) => sum + item.counter,
-                0
+                0,
               );
               return {
                 items: updatedItems,
@@ -82,11 +81,11 @@ export const useMarketBin = create<MarketBin>()(
               };
             } else {
               const filteredItems = updatedItems.filter(
-                (_, index) => index !== existingItemIndex
+                (_, index) => index !== existingItemIndex,
               );
               const totalItemsSum = filteredItems.reduce(
                 (sum, item) => sum + item.counter,
-                0
+                0,
               );
               return {
                 items: filteredItems,
@@ -101,6 +100,6 @@ export const useMarketBin = create<MarketBin>()(
     }),
     {
       name: "market-bin-storage",
-    }
-  )
+    },
+  ),
 );

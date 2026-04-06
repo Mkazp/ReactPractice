@@ -11,6 +11,7 @@ interface Data {
   rating: number;
   description: string;
   onAddToCart: (item: { id: number[]; counter: number }) => void;
+
 }
 
 export const Card = ({
@@ -23,6 +24,7 @@ export const Card = ({
   description,
   isPremium,
   onAddToCart,
+
 }: Data) => {
   return (
     <div
@@ -35,6 +37,7 @@ export const Card = ({
         <p className={styles.price}>
           Цена: {price} {currency}
         </p>
+
       </div>
       <p>Описание: {description}</p>
       <button onClick={() => onAddToCart({ id: [id], counter: 0 })}>
