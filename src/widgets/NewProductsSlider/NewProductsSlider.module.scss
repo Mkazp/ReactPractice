@@ -1,0 +1,47 @@
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.viewport {
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+.track {
+    display: flex;
+    gap: 16px;
+    will-change: transform;
+}
+
+.slide {
+    flex: 0 0 auto;
+    width: 220px;
+}
+
+/* DOTS */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: 0.25s ease;
+}
+
+.active {
+    width: 18px;
+    border-radius: 20px;
+    background: #111;
+}

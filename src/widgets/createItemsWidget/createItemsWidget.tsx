@@ -12,6 +12,7 @@ const CreateItemsWidget = () => {
     const [rating, setRating] = useState(0);
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
+    const [image, setImage] = useState("");
     const [isPremium, setIsPremium] = useState(false);
     const [removeName, setRemoveName] = useState("");
     
@@ -32,7 +33,8 @@ const CreateItemsWidget = () => {
             stock,
             isPremium,
             currency: "USD",
-            description: ""
+            description: "",
+            image,
         });
 
         showNotification(`Товар "${name}" добавлен!`);
@@ -43,6 +45,7 @@ const CreateItemsWidget = () => {
         setPrice(0);
         setStock(0);
         setIsPremium(false);
+        setImage("");
     };
 
     const handleRemove = () => {
@@ -109,6 +112,15 @@ const CreateItemsWidget = () => {
                         type="checkbox"
                         checked={isPremium}
                         onChange={(e) => setIsPremium(e.target.checked)}
+                    />
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label>Банер:</label>
+                    <input 
+                        value={image}
+                        placeholder="Введите ссылку на фото"
+                        onChange={(e) => setImage(String(e.target.value))}
                     />
                 </div>
 

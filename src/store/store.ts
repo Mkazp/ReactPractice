@@ -11,6 +11,7 @@ interface MarketItem {
   stock: number;
   rating: number;
   description: string;
+  image: string;
 }
 
 interface MarketItemsStore {
@@ -36,6 +37,6 @@ export const useMarketItemsStore = create<MarketItemsStore>()(
     }),
     {
       name: "market-items-storage",
-    }
-  )
+    },
+  ),
 );

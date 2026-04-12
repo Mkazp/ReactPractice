@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 38px 10px 12px;
+
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  background: #dfdfdf;
+  font-size: 14px;
+
+  // appearance: none;
+  outline: none;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.select:hover {
+  border-color: #818181;
+}
+
+.select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+// .arrow {
+//   position: absolute;
+//   right: 12px;
+//   top: 50%;
+//   transform: translateY(-50%);
+
+//   pointer-events: none;
+//   font-size: 14px;
+//   color: #666;
+// }

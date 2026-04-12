@@ -1,0 +1,60 @@
+/* Skeleton container */
+.skeleton {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #eaeaea;
+}
+
+/* shimmer animation */
+.skeleton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+    animation: skeleton-loading 1.5s infinite;
+}
+
+/* название skeleton */
+.skeletonTitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,0.6);
+}
+
+/* animation */
+@keyframes skeleton-loading {
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* tablet */
+@media (max-width: 768px) {
+    .skeleton {
+        height: 180px;
+    }
+}
+
+
+/* mobile */
+@media (max-width: 480px) {
+    .skeleton {
+        height: 150px;
+        border-radius: 10px;
+    }
+}

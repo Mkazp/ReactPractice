@@ -4,6 +4,10 @@ import styles from "./productList.module.scss";
 import { Card } from "../../shardes/Card/Card";
 import CardSelect from "../../shardes/Select/CardSelect";
 import ItemsSearch from "../../shardes/Search/ItemsSearch";
+import PriceFilter from "../../shardes/PriceFilter/PriceFilter";
+import RatingFilter from "../../shardes/RatingFilter/RatingFilter";
+import CategoryFilter from "../../shardes/CategoryFilter/CategoryFilter";
+
 import { useMarketItemsStore } from "../../store/store";
 import { useMarketBin } from "../../store/marketStore";
 
@@ -17,74 +21,150 @@ interface Data {
   stock: number;
   rating: number;
   description: string;
-  image?: string;
+  image: string;
 }
+
+const DEFAULT_PRICE: [number, number] = [0, 1000];
 
 export const ProductList = () => {
   const [items, setItems] = useState<Data[]>([]);
-  const [sort, setSort] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+
+  const [sort, setSort] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const [priceRange, setPriceRange] =
+    useState<[number, number]>(DEFAULT_PRICE);
+
+  const [rating, setRating] = useState<number>(0);
+  const [category, setCategory] = useState<string>("");
 
   const createdItems = useMarketItemsStore((state) => state.items);
   const { counterInc } = useMarketBin();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/data/items.json");
-      const data = await response.json();
-      setItems(data.products);
+      const res = await fetch("/data/items.json");
+      const data = await res.json();
+      setItems(data.products ?? []);
     };
 
     fetchData();
   }, []);
 
-  const sortedItems = useMemo(() => {
-    const allItems = [...items, ...createdItems];
+  const categories = useMemo(() => {
+    const all = [...items, ...createdItems];
+    return [...new Set(all.map((i) => i.category))];
+  }, [items, createdItems]);
 
-    let filtered = [...allItems];
+  const filteredItems = useMemo(() => {
+    const all = [...items, ...createdItems];
 
-    if (sort === "isPremium") {
-      filtered = filtered.filter((item) => item.isPremium);
-    }
+    return all
+      .filter((item) => {
+        if (sort === "isPremium") return item.isPremium;
+        if (sort === "!isPremium") return !item.isPremium;
+        return true;
+      })
 
-    if (sort === "!isPremium") {
-      filtered = filtered.filter((item) => !item.isPremium);
-    }
+      .filter((item) =>
+        searchQuery
+          ? item.name.toLowerCase().includes(searchQuery.toLowerCase())
+          : true
+      )
 
-    if (searchQuery) {
-      filtered = filtered.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      .filter(
+        (item) =>
+          item.price >= priceRange[0] &&
+          item.price <= priceRange[1]
+      )
+
+      .filter((item) =>
+        rating > 0 ? item.rating >= rating : true
+      )
+
+      .filter((item) =>
+        category ? item.category === category : true
       );
-    }
+  }, [
+    items,
+    createdItems,
+    sort,
+    searchQuery,
+    priceRange,
+    rating,
+    category,
+  ]);
 
-    return filtered;
-  }, [sort, items, createdItems, searchQuery]);
+  const resetFilters = () => {
+    setSort("");
+    setSearchQuery("");
+    setPriceRange(DEFAULT_PRICE);
+    setRating(0);
+    setCategory("");
+  };
 
   return (
-    <div className={styles.list}>
-      <h3>Поиск</h3>
+    <div className={styles.wrapper}>
+      {/* SIDEBAR */}
+      <div className={styles.sidebar}>
+        <h3>Фильтры</h3>
 
-      <ItemsSearch
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Поиск"
-      />
+        <ItemsSearch
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Поиск"
+        />
 
-      <CardSelect
-        value={sort}
-        onChange={setSort}
-        defaultValue="Все товары"
-        options={[
-          { value: "isPremium", name: "Премиум сегмент" },
-          { value: "!isPremium", name: "Обычный сегмент" },
-        ]}
-      />
+        <CardSelect
+          value={sort}
+          onChange={setSort}
+          defaultValue="Все товары"
+          options={[
+            { value: "isPremium", name: "Премиум" },
+            { value: "!isPremium", name: "Обычные" },
+          ]}
+        />
 
-      <h3>Товары</h3>
+        <PriceFilter
+          min={0}
+          max={1000}
+          value={priceRange}
+          onChange={setPriceRange}
+        />
 
-      {sortedItems.map((item) => (
-        <Card key={item.id} {...item} onAddToCart={counterInc} />
-      ))}
+        <RatingFilter
+          value={rating}
+          onChange={setRating}
+        />
+
+        <CategoryFilter
+          value={category}
+          onChange={setCategory}
+          categories={categories}
+        />
+
+        <button
+          className={styles.reset}
+          onClick={resetFilters}
+        >
+          Очистить фильтры
+        </button>
+      </div>
+
+      {/* PRODUCTS */}
+      <div className={styles.products}>
+        <h3>Товары ({filteredItems.length})</h3>
+
+        <div className={styles.list}>
+          {filteredItems.map((item) => (
+            <Card
+              key={item.id}
+              {...item}
+              onAddToCart={counterInc}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

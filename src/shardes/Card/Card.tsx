@@ -1,4 +1,5 @@
 import styles from "./Card.module.scss";
+import { useNavigate } from "react-router-dom";
 
 interface Data {
   id: number;
@@ -10,8 +11,8 @@ interface Data {
   stock: number;
   rating: number;
   description: string;
-  onAddToCart: (item: { id: number[]; counter: number }) => void;
-
+  image: string;
+  onAddToCart?: (item: { id: number[]; counter: number }) => void;
 }
 
 export const Card = ({
@@ -23,26 +24,37 @@ export const Card = ({
   rating,
   description,
   isPremium,
-  onAddToCart,
-
+  image
 }: Data) => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
     <div
+      onClick={handleClick}
       className={`${styles.card} ${isPremium ? styles.premium : styles.default}`}
     >
+
+      <img src={image} alt={name} className={styles.image} />
+
       <h3>{name}</h3>
+
       <p>Категория: {category}</p>
+
       <div className={styles.productInfo}>
         <p className={styles.rating}>★ {rating}</p>
+
         <p className={styles.price}>
           Цена: {price} {currency}
         </p>
-
       </div>
+
       <p>Описание: {description}</p>
-      <button onClick={() => onAddToCart({ id: [id], counter: 0 })}>
-        Купить
-      </button>
+
     </div>
   );
 };

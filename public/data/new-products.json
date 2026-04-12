@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 15 Pro",
+      "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569",
+      "description": "iphone"
+    },
+    {
+      "id": 2,
+      "name": "MacBook Pro",
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+      "description": "mac"
+    },
+    {
+      "id": 3,
+      "name": "AirPods Pro",
+      "image": "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f37",
+      "description": "airpods"
+    },
+    {
+      "id": 4,
+      "name": "Apple Watch",
+      "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+      "description": "watch"
+    },
+    {
+      "id": 5,
+      "name": "iPad Pro",
+      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0",
+      "description": "ipad"
+    },
+    {
+      "id": 6,
+      "name": "Sony WH-1000XM5",
+      "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+      "description": "sony"
+    },
+    {
+      "id": 7,
+      "name": "PlayStation 5",
+      "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db",
+      "description": "ps5"
+    },
+    {
+      "id": 8,
+      "name": "Xbox Series X",
+      "image": "https://images.unsplash.com/photo-1621259182978-fbf93132d53d",
+      "description": "xbox"
+    },
+    {
+      "id": 9,
+      "name": "Nintendo Switch",
+      "image": "https://images.unsplash.com/photo-1605902711622-cfb43c4437d1",
+      "description": "switch"
+    },
+    {
+      "id": 10,
+      "name": "Samsung Galaxy S24",
+      "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
+      "description": "samsung"
+    },
+    {
+      "id": 11,
+      "name": "Logitech MX Master",
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      "description": "mouse"
+    },
+    {
+      "id": 12,
+      "name": "Mechanical Keyboard",
+      "image": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04",
+      "description": "keyboard"
+    }
+  ]
+}
