@@ -1,0 +1,102 @@
+.card {
+  padding: 16px;
+  border-radius: 16px;
+  height: 360px;
+  background: white;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* shimmer animation */
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e6e6e6 37%,
+    #f0f0f0 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 8px;
+}
+
+/* элементы */
+
+.image {
+  @extend .skeleton;
+  height: 170px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.title {
+  @extend .skeleton;
+  height: 18px;
+  width: 70%;
+}
+
+.description {
+  @extend .skeleton;
+  height: 12px;
+  width: 90%;
+}
+
+.productInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  @extend .skeleton;
+  height: 14px;
+  width: 60px;
+}
+
+.rating {
+  @extend .skeleton;
+  height: 14px;
+  width: 40px;
+}
+
+.button {
+  @extend .skeleton;
+  margin-top: auto;
+  height: 34px;
+  border-radius: 8px;
+}
+
+/* адаптив */
+
+@media (max-width: 768px) {
+  .card {
+    height: 340px;
+  }
+
+  .image {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 320px;
+  }
+
+  .image {
+    height: 130px;
+  }
+}

@@ -1,0 +1,41 @@
+.wrapper {
+  padding: 40px;
+}
+
+.back {
+  margin-bottom: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+}
+
+.content img {
+  width: 400px;
+  border-radius: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}

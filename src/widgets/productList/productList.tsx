@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import styles from "./productList.module.scss";
 
 import { Card } from "../../shardes/Card/Card";
+import { CardSkeleton } from "../../shardes/Card/Skeleton/CardSkeleton";
 import CardSelect from "../../shardes/Select/CardSelect";
 import ItemsSearch from "../../shardes/Search/ItemsSearch";
 import PriceFilter from "../../shardes/PriceFilter/PriceFilter";
@@ -35,21 +36,32 @@ export const ProductList = () => {
   const [priceRange, setPriceRange] =
     useState<[number, number]>(DEFAULT_PRICE);
 
+  const [isLoading, setLoading] = useState<boolean>(true);
+
   const [rating, setRating] = useState<number>(0);
   const [category, setCategory] = useState<string>("");
 
   const createdItems = useMarketItemsStore((state) => state.items);
   const { counterInc } = useMarketBin();
 
-  useEffect(() => {
-    const fetchData = async () => {
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+
       const res = await fetch("/data/items.json");
       const data = await res.json();
-      setItems(data.products ?? []);
-    };
 
-    fetchData();
-  }, []);
+      setItems(data.products ?? []);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
 
   const categories = useMemo(() => {
     const all = [...items, ...createdItems];
@@ -105,7 +117,6 @@ export const ProductList = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* SIDEBAR */}
       <div className={styles.sidebar}>
         <h3>Фильтры</h3>
 
@@ -151,12 +162,16 @@ export const ProductList = () => {
         </button>
       </div>
 
-      {/* PRODUCTS */}
       <div className={styles.products}>
         <h3>Товары ({filteredItems.length})</h3>
 
         <div className={styles.list}>
-          {filteredItems.map((item) => (
+          {isLoading
+          ? Array(8)
+          .fill(0)
+          .map((_, i) => <CardSkeleton key={i} />)
+          :
+          filteredItems.map((item) => (
             <Card
               key={item.id}
               {...item}
