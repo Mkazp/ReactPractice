@@ -1,73 +1,130 @@
-# React + TypeScript + Vite
+# Online Market
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современный интернет‑магазин, разработанный с использованием **React**, **TypeScript** и **Zustand**. Проект демонстрирует навыки построения масштабируемого frontend‑приложения с адаптивным дизайном и продуманной архитектурой.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Скриншоты
 
-## React Compiler
+## Главная страница
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![alt text](/public/image.png)
 
-## Expanding the ESLint configuration
+## Карточка товара
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![alt text](/public/image-1.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Функционал
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Каталог товаров
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Отображение списка товаров
+- Карточки товаров
+- Категории товаров
+- Рейтинг товаров
+
+### Корзина
+
+- Добавление товара в корзину
+- Удаление товара
+- Подсчет количества
+- Управление состоянием
+
+### Страница товара
+
+- Детальная информация
+- Рейтинг
+- Описание
+- Цена
+- Premium бейдж
+- Zoom изображения
+
+Проект построен по принципам **Feature-Sliced Design**.
+
+---
+
+# Технологии
+
+- React
+- TypeScript
+- Zustand
+- React Router
+- SCSS Modules
+- Vite
+
+---
+
+# Установка и запуск
+
+### 1. Клонировать репозиторий
+
+```
+git clone https://github.com/Mkazp/ReactPractice
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Перейти в папку
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+cd project-name
+```
+
+### 3. Установить зависимости
+
+```
+npm install
+```
+
+### 4. Запустить проект
+
+```
+npm run dev
+```
+
+---
+
+# 📂 Основные компоненты
+
+### Product Card
+
+- Отображение товара
+- Рейтинг
+- Цена
+- Кнопка добавления
+
+### Product Details
+
+- Детальная страница товара
+- Zoom изображения
+- Premium статус
+
+### Cart
+
+- Управление корзиной
+- Подсчет товаров
+
+---
+
+# Цель проекта
+
+Цель проекта — продемонстрировать навыки разработки frontend‑приложений:
+
+- Работа с React
+- TypeScript
+- Архитектура проекта
+- State management
+- Адаптивная верстка
+- UI/UX
+
+---
+
+# 📈 Возможные улучшения
+
+- Авторизация
+- Backend интеграция
+- Избранное
+
+---
+
+# 👨‍💻 Автор
+
+## Michael Kacprzak

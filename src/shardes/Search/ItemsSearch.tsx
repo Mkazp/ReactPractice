@@ -1,6 +1,5 @@
 import styles from './ItemsSearch.module.scss'
 
-
 interface ItemsSearchProps {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

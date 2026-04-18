@@ -1,41 +1,165 @@
 .wrapper {
-  padding: 40px;
-}
+  background: #f8f9fb;
+  min-height: 85vh;
 
-.back {
-  margin-bottom: 20px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 16px;
+  display: flex;
+  justify-content: center;
+
+  padding: 40px 20px;
 }
 
 .content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 30px;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+
+  max-width: 1100px;
+  width: 100%;
 }
 
-.content img {
-  width: 400px;
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  border: none;
+  background: #f5f6f8;
+  padding: 8px 14px;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.2s;
+  font-weight: 500;
+
+  &:hover {
+    background: #eceef2;
+  }
+}
+
+.body {
+  display: flex;
+  gap: 60px;
+}
+
+.imageWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.imageWrapper img {
+  width: 420px;
+  max-width: 100%;
   border-radius: 16px;
+
+  cursor: zoom-in;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.premium {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+
+  background: gold;
+  color: black;
+
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  font-weight: 600;
+  font-size: 12px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
+
+  max-width: 500px;
 }
 
-.price {
-  font-size: 20px;
+.info h1 {
+  font-size: 28px;
   font-weight: 600;
 }
 
+.category {
+  color: #777;
+  font-size: 14px;
+}
+
+.rating {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5a623;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.description {
+  color: #555;
+  line-height: 1.6;
+}
+
 .button {
-  padding: 12px;
-  border-radius: 10px;
+  margin-top: 10px;
+
+  padding: 14px;
+  border-radius: 12px;
   border: none;
+
   background: black;
   color: white;
+
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+}
+
+@media (max-width: 900px) {
+  .body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info {
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 20px;
+  }
+
+  .info h1 {
+    font-size: 22px;
+  }
+
+  .price {
+    font-size: 22px;
+  }
 }

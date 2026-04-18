@@ -56,14 +56,10 @@
   font-weight: 600;
 }
 
-/* обычная карточка */
-
 .default {
   background: #ffffff;
   border: 1px solid #ececec;
 }
-
-/* premium карточка */
 
 .premium {
   background: linear-gradient(135deg, #1e1e2f, #2d2d44);
@@ -83,8 +79,6 @@
   }
 }
 
-/* кнопка */
-
 .button {
   margin-top: auto;
   background: transparent;
@@ -98,8 +92,6 @@
     background: #f3f3f3;
   }
 }
-
-/* адаптив */
 
 @media (max-width: 768px) {
   .card {

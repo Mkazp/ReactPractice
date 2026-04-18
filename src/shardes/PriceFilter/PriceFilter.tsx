@@ -66,14 +66,12 @@ const PriceFilter = ({ min, max, value, onChange }: Props) => {
           }}
         />
 
-        {/* MIN */}
         <div
           className={styles.thumb}
           style={{ left: `${percent(minVal)}%`, zIndex: 2 }}
           onPointerDown={startDrag("min")}
         />
 
-        {/* MAX */}
         <div
           className={styles.thumb}
           style={{ left: `${percent(maxVal)}%`, zIndex: 3 }}

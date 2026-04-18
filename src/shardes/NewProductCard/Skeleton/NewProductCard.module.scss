@@ -1,4 +1,3 @@
-/* Skeleton container */
 .skeleton {
     position: relative;
     width: 100%;
@@ -8,7 +7,6 @@
     background: #eaeaea;
 }
 
-/* shimmer animation */
 .skeleton::before {
     content: "";
     position: absolute;
@@ -25,7 +23,6 @@
     animation: skeleton-loading 1.5s infinite;
 }
 
-/* название skeleton */
 .skeletonTitle {
     position: absolute;
     bottom: 0;
@@ -35,23 +32,18 @@
     background: rgba(255,255,255,0.6);
 }
 
-/* animation */
 @keyframes skeleton-loading {
     100% {
         left: 100%;
     }
 }
 
-
-/* tablet */
 @media (max-width: 768px) {
     .skeleton {
         height: 180px;
     }
 }
 
-
-/* mobile */
 @media (max-width: 480px) {
     .skeleton {
         height: 150px;

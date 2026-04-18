@@ -11,8 +11,6 @@
   gap: 10px;
 }
 
-/* shimmer animation */
-
 @keyframes shimmer {
   0% {
     background-position: -400px 0;
@@ -33,8 +31,6 @@
   animation: shimmer 1.4s ease infinite;
   border-radius: 8px;
 }
-
-/* элементы */
 
 .image {
   @extend .skeleton;
@@ -78,8 +74,6 @@
   height: 34px;
   border-radius: 8px;
 }
-
-/* адаптив */
 
 @media (max-width: 768px) {
   .card {

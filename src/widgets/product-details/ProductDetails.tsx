@@ -1,6 +1,8 @@
 import styles from "./ProductDetails.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useMarketBin } from "../../store/marketStore";
+import { useState } from "react";
+import { ImageModal } from "./ImageModal/ImageModal";
 
 interface Product {
   id: number;
@@ -21,8 +23,9 @@ interface Props {
 
 export const ProductDetails = ({ product }: Props) => {
   const navigate = useNavigate();
-
   const counterInc = useMarketBin((state) => state.counterInc);
+
+  const [open, setOpen] = useState(false);
 
   const onAddToCart = () => {
     counterInc({
@@ -33,36 +36,66 @@ export const ProductDetails = ({ product }: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      
+      <div className={styles.content}>
+      <div className={styles.header}>
       <button
         className={styles.back}
         onClick={() => navigate(-1)}
       >
         ← Назад
       </button>
+    </div>
 
-      <div className={styles.content}>
-        <img src={product.image} alt={product.name} />
+    <div className={styles.body}>
+        <div className={styles.imageWrapper}>
+          {product.isPremium && (
+            <span className={styles.premium}>
+              Premium
+            </span>
+          )}
+
+          <img
+            src={product.image}
+            alt={product.name}
+            onClick={() => setOpen(true)}
+          />
+        </div>
 
         <div className={styles.info}>
           <h1>{product.name}</h1>
 
-          <p>Категория: {product.category}</p>
-
-          <p>★ {product.rating}</p>
-
-          <p className={styles.price}>
-            {product.price} {product.currency}
+          <p className={styles.category}>
+            {product.category}
           </p>
 
-          <p>{product.description}</p>
+          <div className={styles.rating}>
+            ★ {product.rating}
+          </div>
 
-          <button className={styles.button} onClick={onAddToCart}>
+          <div className={styles.price}>
+            {product.price} {product.currency}
+          </div>
+
+          <p className={styles.description}>
+            {product.description}
+          </p>
+
+          <button
+            className={styles.button}
+            onClick={onAddToCart}
+          >
             Добавить в корзину
           </button>
         </div>
       </div>
+      </div>
 
+      {open && (
+        <ImageModal
+          image={product.image}
+          onClose={() => setOpen(false)}
+        />
+      )}
     </div>
   );
 };
