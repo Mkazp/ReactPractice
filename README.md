@@ -14,6 +14,9 @@
 
 ![alt text](/public/image-1.png)
 
+# Макет
+https://react-practice-market.vercel.app/
+
 # Функционал
 
 ### Каталог товаров
