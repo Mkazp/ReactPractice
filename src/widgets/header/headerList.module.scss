@@ -2,14 +2,14 @@
   width: 100%;
   background: white;
   border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 16px 20px;
-  
+
   display: flex;
   align-items: center;
   gap: 24px;
@@ -33,5 +33,31 @@
 
   &:active {
     transform: translateY(1px);
+  }
+}
+
+.authBlock {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto; // чтобы прижать к правому краю
+}
+
+.userGreeting {
+  color: #333;
+  font-weight: 500;
+}
+
+.logoutBtn,
+.loginBtn {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: #f0f0f0;
   }
 }
