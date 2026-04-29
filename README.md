@@ -15,7 +15,11 @@
 ![alt text](/public/image-1.png)
 
 # Макет
+
 https://react-practice-market.vercel.app/
+
+Для работы регистрации необходим backend модуль:
+https://github.com/Mkazp/OnlineMarketBackend
 
 # Функционал
 
